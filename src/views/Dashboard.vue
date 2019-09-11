@@ -1,7 +1,10 @@
 <template>
     <div id="wrapper">
+        <span v-if="role != 'Admin'">
+            {{ this.$router.push('/peserta') }}
+        </span>
         <div id="sidebar-wrapper">
-            <ul class="sidebar-nav" v-if="role == 'Admin'">
+            <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#">Register Latsar</a>
                 </li>
@@ -12,21 +15,6 @@
                 <li><router-link to="/dashboard/daftar_hadir">Daftar Hadir</router-link></li>
                 <li><router-link to="/dashboard/nametag">Nametag</router-link></li>
             </ul>
-            <div class="flex flex-col h-screen" v-if="role == 'Peserta'">
-                <div class="text-gray-700 text-center px-2 py-2 mx-2 mt-5">
-                    <img class="img-fluid img-profile rounded-circle mx-auto" src="@/assets/user_p.png" width="100" height="100">
-                </div>
-                <div class="text-gray-700 text-center px-2 py-2 mx-2 mt-2">
-                    <ul class="sidebar-nav1">
-                        <li><router-link to="/peserta">Profile</router-link></li>
-                        <li><router-link to="/peserta/biodata">Biodata</router-link></li>
-                        <li><router-link to="/peserta/dokumen">Dokumen</router-link></li>
-                        <li><router-link to="/peserta/nametag">Nametag</router-link></li>
-                        <li @click="logout"><a href="#">Logout</a></li>
-                    </ul>
-                </div>
-                <!-- <div class"text-gray-700 text-center bg-gray-400 px-2 py-2 mx-2 mt-2">3</div> -->
-            </div>
         </div>
         <div id="page-content-wrapper">
             <div class="container-fluid">
@@ -40,8 +28,8 @@
                                 <div>
                                     <b-dropdown id="dropdown-1" right text="username" variant="bg-transparent">
                                         <b-dropdown-item @click="logout">Logout</b-dropdown-item>
-                                        <b-dropdown-item>Second Action</b-dropdown-item>
-                                        <b-dropdown-item>Third Action</b-dropdown-item>
+                                        <!-- <b-dropdown-item>Second Action</b-dropdown-item>
+                                        <b-dropdown-item>Third Action</b-dropdown-item> -->
                                     </b-dropdown>
                                 </div>
                             </div>

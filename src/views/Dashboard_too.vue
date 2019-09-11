@@ -6,3 +6,12 @@
     <!-- <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a> -->
   </div>
 </template>
+<script>
+export default {
+  data(){
+    return{
+      role: this.$store.getters.role
+    }
+  }
+}
+</script>

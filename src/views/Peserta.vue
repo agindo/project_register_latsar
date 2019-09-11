@@ -1,5 +1,8 @@
 <template>
     <div id="wrapper">
+        <span v-if="role != 'Peserta'">
+            {{ this.$router.push('/dashboard') }}
+        </span>
         <div id="sidebar-wrapper">
             <div class="flex flex-col h-screen">
                 <div class="text-gray-700 text-center px-2 py-2 mx-2 mt-5">
@@ -11,7 +14,7 @@
                         <li><router-link to="/peserta/biodata">Biodata</router-link></li>
                         <li><router-link to="/peserta/dokumen">Dokumen</router-link></li>
                         <li><router-link to="/peserta/nametag">Nametag</router-link></li>
-                        <li><a href="#">Logout</a></li>
+                        <li><a @click="logout" class="cursor-pointer">Logout</a></li>
                     </ul>
                 </div>
                 <!-- <div class"text-gray-700 text-center bg-gray-400 px-2 py-2 mx-2 mt-2">3</div> -->
@@ -53,6 +56,23 @@
         </div>
     </div>
 </template>
+<script>
+export default {
+    data(){
+        return{
+            role: this.$store.getters.role,
+        }
+    },
+    methods: {
+        logout: function () {
+            this.$store.dispatch('logout')
+            .then(() => {
+                this.$router.push('/login')
+            })
+        }
+    }
+}
+</script>
 <style scoped>
 /*!
  * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
